@@ -20,13 +20,16 @@
 var searchEl = document.querySelector('#city-search');
 var submitEl = document.querySelector('.submit');
 
-function init() {
 
+function init() {
+    
 }
 
 function citySearch() {
     var currentCity = searchEl.value;
-    console.log(currentCity);
+    var geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${currentCity}&limit=1&appid=43ba4285918e75abf5e651327d673253`
+    console.log(geoUrl);
+
 }
 
 submitEl.addEventListener('click', citySearch);
