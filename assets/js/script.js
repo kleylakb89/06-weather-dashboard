@@ -35,6 +35,11 @@ function citySearch() {
         })
         .then(function (data) {
             console.log(data)
+            for (var city of data) {
+                var lat = city.lat;
+                var lon = city.lon;
+            }
+            console.log(lat, lon);
         })
 }
 
