@@ -28,8 +28,14 @@ function init() {
 function citySearch() {
     var currentCity = searchEl.value;
     var geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${currentCity}&limit=1&appid=43ba4285918e75abf5e651327d673253`
-    console.log(geoUrl);
-
+    
+    fetch(geoUrl)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data)
+        })
 }
 
 submitEl.addEventListener('click', citySearch);
