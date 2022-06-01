@@ -10,3 +10,25 @@
 // TODO: display function to dynamically write to HTML
 // TODO: save searches to local storage to reaccess easily
 // TODO: Format page
+
+// TODO: In order to search for a city:
+// query textarea and button
+// add event listener to button
+// fail state for searched city?
+// fetch API for geocode of city
+
+var searchEl = document.querySelector('#city-search');
+var submitEl = document.querySelector('.submit');
+
+function init() {
+
+}
+
+function citySearch() {
+    var currentCity = searchEl.value;
+    console.log(currentCity);
+}
+
+submitEl.addEventListener('click', citySearch);
+
+init();
