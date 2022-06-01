@@ -25,7 +25,8 @@ var lat;
 var lon;
 
 function init() {
-    
+    var now = moment().format('MM/DD/YYYY');
+    console.log(now);
 }
 
 function citySearch() {
