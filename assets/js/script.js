@@ -20,6 +20,8 @@
 var searchEl = document.querySelector('#city-search');
 var submitEl = document.querySelector('.submit');
 
+var lat;
+var lon;
 
 function init() {
     
@@ -27,19 +29,31 @@ function init() {
 
 function citySearch() {
     var currentCity = searchEl.value;
-    var geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${currentCity}&limit=1&appid=43ba4285918e75abf5e651327d673253`
+    var geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${currentCity}&limit=1&appid=43ba4285918e75abf5e651327d673253`;
     
     fetch(geoUrl)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data)
             for (var city of data) {
-                var lat = city.lat;
-                var lon = city.lon;
+                lat = city.lat;
+                lon = city.lon;
             }
             console.log(lat, lon);
+            weatherSearch(lat, lon);
+        })
+}
+
+function weatherSearch(lat, lon) {
+    weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=43ba4285918e75abf5e651327d673253&units=imperial`;
+
+    fetch(weatherUrl)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
         })
 }
 
