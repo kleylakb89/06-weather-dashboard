@@ -25,8 +25,7 @@ var lat;
 var lon;
 
 function init() {
-    var now = moment().format('MM/DD/YYYY');
-    console.log(now);
+    
 }
 
 function citySearch() {
@@ -57,10 +56,15 @@ function weatherSearch(lat, lon) {
             console.log(data);
             var currentEl = document.createElement('section');
             var nameEl = document.createElement('h2');
+            var dateEl = document.createElement('h3');
+
+            var now = moment().format('MM/DD/YYYY');
+            console.log(now);
 
             nameEl.textContent = data.name;
+            dateEl.textContent = now;
 
-            currentEl.append(nameEl);
+            currentEl.append(nameEl, dateEl);
             cityEl.appendChild(currentEl);
         })
 }
