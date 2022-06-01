@@ -19,6 +19,7 @@
 
 var searchEl = document.querySelector('#city-search');
 var submitEl = document.querySelector('.submit');
+var cityEl = document.querySelector('.current-city');
 
 var lat;
 var lon;
@@ -40,7 +41,6 @@ function citySearch() {
                 lat = city.lat;
                 lon = city.lon;
             }
-            console.log(lat, lon);
             weatherSearch(lat, lon);
         })
 }
@@ -54,6 +54,13 @@ function weatherSearch(lat, lon) {
         })
         .then(function (data) {
             console.log(data);
+            var currentEl = document.createElement('section');
+            var nameEl = document.createElement('h2');
+
+            nameEl.textContent = data.name;
+
+            currentEl.append(nameEl);
+            cityEl.appendChild(currentEl);
         })
 }
 
