@@ -58,18 +58,20 @@ function weatherSearch(lat, lon) {
         var nameEl = document.createElement('h2');
         var dateEl = document.createElement('h3');
         var iconEl = document.createElement('img');
+        var tempEl = document.createElement('p');
         
         var now = moment().format('MM/DD/YYYY');
         var icon = data.weather[0].icon;
         var iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
         
-            nameEl.textContent = data.name;
-            dateEl.textContent = now;
-            iconEl.src = iconUrl;
+        nameEl.textContent = data.name;
+        dateEl.textContent = now;
+        iconEl.src = iconUrl;
+        tempEl.textContent = data.main.feels_like;
 
-            currentEl.append(nameEl, dateEl, iconEl);
-            cityEl.appendChild(currentEl);
-        })
+        currentEl.append(nameEl, dateEl, iconEl, tempEl);
+        cityEl.appendChild(currentEl);
+    })
 }
 
 submitEl.addEventListener('click', citySearch);
