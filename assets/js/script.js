@@ -26,7 +26,7 @@ var lat;
 var lon;
 
 function init() {
-
+    displayHistory();
 }
 
 function citySearch() {
@@ -124,11 +124,27 @@ function displayFuture(arr) {
 }
 
 function searchHistory(city) {
-    var pastCities = JSON.parse(localStorage.getItem('searchHistory')) || [];
+    var pastCities = JSON.parse(localStorage.getItem('search-history')) || [];
+    
     
     pastCities.push(city);
     
-    localStorage.setItem('searchHistory', JSON.stringify(pastCities))
+    localStorage.setItem('search-history', JSON.stringify(pastCities))
+
+    displayHistory();
+}
+
+function displayHistory() {
+    var pastCities = JSON.parse(localStorage.getItem('search-history')) || [];
+
+    historyEl.innerHTML = null;
+    for (city of pastCities) {
+        var pCityEl = document.createElement('p');
+
+        pCityEl.textContent = city;
+
+        historyEl.append(pCityEl);
+    }
 }
 
 submitEl.addEventListener('click', citySearch);
