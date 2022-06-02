@@ -1,0 +1,54 @@
+:root {
+    --celadon: #0081a7;
+    --lightBlue: #dcedff;
+    --pink: #cc8b86;
+    --darkPurple: #413f54;
+    --offBlack: #30292f;
+}
+
+/* TODO: Google Fonts */
+* {
+    margin: 8px;
+}
+
+header {
+    text-align: center;
+    background-image: linear-gradient(to bottom right, var(--darkPurple), var(--celadon));
+    color: var(--lightBlue);
+    border-radius: 8px;
+}
+
+aside {
+    display: block;
+    border: 2px solid var(--offBlack);
+    max-width: 20%;
+    padding: 8px;
+    text-align: center;
+}
+
+aside>h2 {
+
+}
+
+#city-search {
+    resize: none;
+    margin: 0 auto;
+}
+
+.submit {
+    display: block;
+    margin: 0 auto;
+    border: none;
+    background-color: var(--celadon);
+    color: var(--lightBlue);
+    border-radius: 8px;
+    padding: 4px;
+    width: 65%;
+}
+
+.submit:hover {
+    cursor: pointer;
+    background-color: var(--pink);
+    color: var(--offBlack);
+    box-shadow: 5px 5px 5px rgba(128, 128, 128, .5);
+}
