@@ -69,7 +69,7 @@ function weatherSearch(city, lat, lon) {
             var now = moment().format('MM/DD/YYYY');
             var icon = data.current.weather[0].icon;
             var iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-
+            
             nameEl.textContent = city;
             dateEl.textContent = now;
             iconEl.src = iconUrl;
@@ -77,16 +77,18 @@ function weatherSearch(city, lat, lon) {
             humidEl.textContent = data.current.humidity;
             windEl.textContent = data.current.wind_speed;
             uviEl.textContent = data.current.uvi;
-
+            
             currentEl.append(nameEl, dateEl, iconEl, tempEl, humidEl, windEl, uviEl);
             cityEl.appendChild(currentEl);
-
+            
             
             for (i = 0; i < 5; i++) {
+                var iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
                 var day = i + 1;
                 var nextDay = data.daily[i];
+                var icon = nextDay.weather[0].icon
                 var date = moment().add(day,'d').format('MM/DD/YYYY')
-                var futureBlock = [date, nextDay.weather[0].icon, nextDay.temp.max, nextDay.wind_speed, nextDay.humidity];
+                var futureBlock = [date, iconUrl, nextDay.temp.max, nextDay.wind_speed, nextDay.humidity];
                 displayFuture(futureBlock);
             };
 
@@ -97,10 +99,18 @@ function weatherSearch(city, lat, lon) {
 function displayFuture(arr) {
     var forecastEl = document.createElement('section');
     var fDateEl = document.createElement('h4');
+    var fIconEl = document.createElement('img');
+    var fTempEl = document.createElement('p');
+    var fWindEl = document.createElement('p');
+    var fHumidEl = document.createElement('p');
 
     fDateEl.textContent = arr[0];
+    fIconEl.src = arr[1];
+    fTempEl.textContent = arr[2];
+    fWindEl.textContent = arr[3];
+    fHumidEl.textContent = arr[4];
 
-    forecastEl.append(fDateEl);
+    forecastEl.append(fDateEl, fIconEl, fTempEl, fWindEl, fHumidEl);
     cityEl.appendChild(forecastEl);
 }
 
