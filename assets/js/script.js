@@ -47,8 +47,9 @@ function citySearch() {
 
 
 function weatherSearch(city, lat, lon) {
-    // var weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=43ba4285918e75abf5e651327d673253&units=imperial`;
     var weatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=43ba4285918e75abf5e651327d673253&units=imperial`;
+
+    cityEl.innerHTML = null;
 
     fetch(weatherUrl)
         .then(function (response) {
@@ -79,6 +80,10 @@ function weatherSearch(city, lat, lon) {
 
             currentEl.append(nameEl, dateEl, iconEl, tempEl, humidEl, windEl, uviEl);
             cityEl.appendChild(currentEl);
+
+            var futureBlock = [moment().add(1,'d').format('MM/DD/YYYY'), data.daily[0].weather[0].icon, data.daily[0].temp.max, data.daily[0].wind_speed, data.daily[0].humidity];
+
+            console.log(futureBlock);
         })
 }
 
