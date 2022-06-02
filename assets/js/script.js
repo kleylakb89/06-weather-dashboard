@@ -24,22 +24,25 @@ var submitEl = document.querySelector('.submit');
 var cityEl = document.querySelector('.current-city');
 var historyEl = document.querySelector('.history');
 
-var lat;
-var lon;
-
 function init() {
     displayHistory();
 }
 
 function citySearch() {
-    var currentCity = searchEl.value;
+    var currentCity = searchEl.value.trim();
     var geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${currentCity}&limit=1&appid=43ba4285918e75abf5e651327d673253`;
     
-    searchHistory(currentCity);
     
     fetch(geoUrl)
     .then(function (response) {
-        return response.json();
+        if(response.ok) {
+            // HERE
+            searchHistory(currentCity);
+            return response.json();
+        } else {
+            (cityEl.textContent = 'Results Not Found');
+            return;
+        }
     })
     .then(function (data) {
         for (var city of data) {
@@ -50,7 +53,6 @@ function citySearch() {
     })
     .catch(function(err) {
         console.log(err);
-        cityEl.textContent = 'Results Not Found';
     })
 }
 
@@ -110,7 +112,6 @@ function weatherSearch(city, lat, lon) {
         })
         .catch(function(err) {
             console.log(err);
-            cityEl.textContent = 'Results Not Found';
         })
     }
     
@@ -143,7 +144,7 @@ function searchHistory(city) {
     }
     // Won't continue save into local storage if empty string is submitted
     if (city === '') {
-        return 
+        return;
     }
     pastCities.push(city);
     
@@ -185,7 +186,14 @@ historyEl.addEventListener('click', function(event){
 
     fetch(geoUrl)
     .then(function (response) {
-        return response.json();
+        if(response.ok) {
+            // HERE
+            searchHistory(currentCity);
+            return response.json();
+        } else {
+            (cityEl.textContent = 'Results Not Found');
+            return;
+        }
     })
     .then(function (data) {
         for (var city of data) {
