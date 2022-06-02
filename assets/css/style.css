@@ -106,8 +106,13 @@ aside>h2 {
 
 .current-list p {
     width: 20%;
+}
+
+.current-list span {
     border-radius: 4px;
-    padding: 2px;
+    padding: 4px;
+    color: var(--lightBlue)
+    
 }
 
 .current-city>p {

@@ -83,6 +83,7 @@ function weatherSearch(city, lat, lon) {
             var humidEl = document.createElement('p');
             var windEl = document.createElement('p');
             var uviEl = document.createElement('p');
+            var spanEl = document.createElement('span');
             var fiveDayEl = document.createElement('p');
             
             var now = moment().format('MM/DD/YYYY');
@@ -95,17 +96,19 @@ function weatherSearch(city, lat, lon) {
             tempEl.textContent = 'Temperature: ' + data.current.temp;
             humidEl.textContent = 'Humidity: ' + data.current.humidity;
             windEl.textContent = 'Wind Speed: ' + data.current.wind_speed;
-            uviEl.textContent = 'UVI: ' + data.current.uvi;
+            uviEl.textContent = 'UVI: ';
+            spanEl.textContent = data.current.uvi
             fiveDayEl.textContent = '5 Day Forecast: ';
             
             divEl.className = 'current-list';
             
             if (data.current.uvi < 4) {
-                uviEl.style.backgroundColor = 'green';
+                spanEl.style.backgroundColor = 'green';
             } else if (data.current.uvi > 3 && data.current.uvi < 7) {
-                uviEl.style.backgroundColor = 'orange';
-            } else uviEl.style.backgroundColor = 'red';
+                spanEl.style.backgroundColor = 'orange';
+            } else span.style.backgroundColor = 'red';
 
+            uviEl.appendChild(spanEl);
             divEl.append(tempEl, humidEl, windEl, uviEl);
             currentEl.append(nameEl, dateEl, iconEl);
             cityEl.append(currentEl, divEl, fiveDayEl);
