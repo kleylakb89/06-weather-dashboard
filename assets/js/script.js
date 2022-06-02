@@ -70,10 +70,10 @@ function weatherSearch(city, lat, lon) {
     cityEl.innerHTML = null;
 
     fetch(weatherUrl)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
             var currentEl = document.createElement('section');
             var nameEl = document.createElement('h2');
             var dateEl = document.createElement('h3');
@@ -83,11 +83,12 @@ function weatherSearch(city, lat, lon) {
             var humidEl = document.createElement('p');
             var windEl = document.createElement('p');
             var uviEl = document.createElement('p');
-
+            var fiveDayEl = document.createElement('p');
+            
             var now = moment().format('MM/DD/YYYY');
             var icon = data.current.weather[0].icon;
             var iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-
+            
             nameEl.textContent = city;
             dateEl.textContent = now;
             iconEl.src = iconUrl;
@@ -95,9 +96,10 @@ function weatherSearch(city, lat, lon) {
             humidEl.textContent = 'Humidity: ' + data.current.humidity;
             windEl.textContent = 'Wind Speed: ' + data.current.wind_speed;
             uviEl.textContent = 'UVI: ' + data.current.uvi;
-
+            fiveDayEl.textContent = '5 Day Forecast: ';
+            
             divEl.className = 'current-list';
-
+            
             if (data.current.uvi < 4) {
                 uviEl.style.backgroundColor = 'green';
             } else if (data.current.uvi > 3 && data.current.uvi < 7) {
@@ -106,7 +108,7 @@ function weatherSearch(city, lat, lon) {
 
             divEl.append(tempEl, humidEl, windEl, uviEl);
             currentEl.append(nameEl, dateEl, iconEl);
-            cityEl.append(currentEl, divEl);
+            cityEl.append(currentEl, divEl, fiveDayEl);
 
 
             for (i = 0; i < 5; i++) {
@@ -137,6 +139,8 @@ function displayFuture(arr) {
     fTempEl.textContent = 'Temp: ' + arr[2];
     fWindEl.textContent = 'Wind: ' + arr[3];
     fHumidEl.textContent = 'Humidity: ' + arr[4];
+
+    forecastEl.className = 'five-days';
 
     forecastEl.append(fDateEl, fIconEl, fTempEl, fWindEl, fHumidEl);
     cityEl.appendChild(forecastEl);
