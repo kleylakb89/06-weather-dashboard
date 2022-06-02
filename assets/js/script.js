@@ -121,7 +121,7 @@ function weatherSearch(city, lat, lon) {
 }
 
 function displayFuture(arr) {
-    var forecastEl = document.createElement('section');
+    var forecastEl = document.createElement('div');
     var fDateEl = document.createElement('h4');
     var fIconEl = document.createElement('img');
     var fTempEl = document.createElement('p');

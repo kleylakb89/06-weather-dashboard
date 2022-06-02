@@ -11,7 +11,14 @@
     margin: 8px;
 }
 
+body {
+    display: flex;
+    flex-direction: row;
+    flex-flow: row wrap;
+}
+
 header {
+    width: 100%;
     text-align: center;
     background-image: linear-gradient(to bottom right, var(--darkPurple), var(--celadon));
     color: var(--lightBlue);
@@ -60,7 +67,7 @@ aside>h2 {
     display: block;
     margin: 6px auto;
     border: none;
-    background-color: var(--celadon);
+    background-color: var(--darkPurple);
     color: var(--lightBlue);
     width: 65%;
     border-radius: 8px;
@@ -71,7 +78,17 @@ aside>h2 {
     cursor: pointer;
     transform: translateY(-4px);
     transition: all 250ms ease;
-    background-color: var(--pink);
-    color: var(--offBlack);
+    background-color: var(--celadon);
+    color: var(--lightBlue);
     box-shadow: 5px 5px 5px rgba(128, 128, 128, .5);
+}
+
+.current-city {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.current-city section {
+    
 }
