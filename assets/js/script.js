@@ -77,6 +77,12 @@ function weatherSearch(city, lat, lon) {
             humidEl.textContent = 'Humidity: ' + data.current.humidity;
             windEl.textContent = 'Wind Speed: ' + data.current.wind_speed;
             uviEl.textContent = 'UVI: ' + data.current.uvi;
+
+            if (data.current.uvi < 4) {
+                uviEl.style.backgroundColor = 'green';
+            } else if (data.current.uvi > 3 && data.current.uvi < 7) {
+                uvi.style.backgroundColor = 'orange';
+            } else uvi.style.backgroundColor = 'red';
             
             currentEl.append(nameEl, dateEl, iconEl, tempEl, humidEl, windEl, uviEl);
             cityEl.appendChild(currentEl);
