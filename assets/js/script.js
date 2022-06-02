@@ -126,6 +126,7 @@ function displayFuture(arr) {
 function searchHistory(city) {
     var pastCities = JSON.parse(localStorage.getItem('search-history')) || [];
 
+    // checks for duplicate searches and removes them from the history before pushing this search
     for (i=0; i<pastCities.length; i++) {
         if (pastCities[i] == city) {
             pastCities.splice(i, 1);
@@ -143,7 +144,7 @@ function displayHistory() {
 
     historyEl.innerHTML = null;
     for (city of pastCities) {
-        var pCityEl = document.createElement('p');
+        var pCityEl = document.createElement('button');
 
         pCityEl.textContent = city;
 
@@ -151,6 +152,46 @@ function displayHistory() {
     }
 }
 
+// function pastSearch(button) {
+//     var currentCity = button.value;
+//     var geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${currentCity}&limit=1&appid=43ba4285918e75abf5e651327d673253`;
+    
+//     searchHistory(currentCity);
+
+//     fetch(geoUrl)
+//     .then(function (response) {
+//         return response.json();
+//     })
+//     .then(function (data) {
+//         for (var city of data) {
+//             lat = city.lat;
+//             lon = city.lon;
+//         }
+//         weatherSearch(currentCity, lat, lon);
+//     })
+// }
+
 submitEl.addEventListener('click', citySearch);
+
+historyEl.addEventListener('click', function(event){
+    var button = event.target
+    var currentCity = button.textContent;
+    console.log(button, currentCity);
+    var geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${currentCity}&limit=1&appid=43ba4285918e75abf5e651327d673253`;
+    
+    searchHistory(currentCity);
+
+    fetch(geoUrl)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        for (var city of data) {
+            lat = city.lat;
+            lon = city.lon;
+        }
+        weatherSearch(currentCity, lat, lon);
+    })
+});
 
 init();
