@@ -125,8 +125,12 @@ function displayFuture(arr) {
 
 function searchHistory(city) {
     var pastCities = JSON.parse(localStorage.getItem('search-history')) || [];
-    
-    
+
+    for (i=0; i<pastCities.length; i++) {
+        if (pastCities[i] == city) {
+            pastCities.splice(i, 1);
+        } 
+    }
     pastCities.push(city);
     
     localStorage.setItem('search-history', JSON.stringify(pastCities))
