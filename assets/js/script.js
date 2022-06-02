@@ -46,25 +46,28 @@ function citySearch() {
 }
 
 function weatherSearch(lat, lon) {
-    weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=43ba4285918e75abf5e651327d673253&units=imperial`;
-
+    var weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=43ba4285918e75abf5e651327d673253&units=imperial`;
+    
     fetch(weatherUrl)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(data);
-            var currentEl = document.createElement('section');
-            var nameEl = document.createElement('h2');
-            var dateEl = document.createElement('h3');
-
-            var now = moment().format('MM/DD/YYYY');
-            console.log(now);
-
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+        var currentEl = document.createElement('section');
+        var nameEl = document.createElement('h2');
+        var dateEl = document.createElement('h3');
+        var iconEl = document.createElement('img');
+        
+        var now = moment().format('MM/DD/YYYY');
+        var icon = data.weather[0].icon;
+        var iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+        
             nameEl.textContent = data.name;
             dateEl.textContent = now;
+            iconEl.src = iconUrl;
 
-            currentEl.append(nameEl, dateEl);
+            currentEl.append(nameEl, dateEl, iconEl);
             cityEl.appendChild(currentEl);
         })
 }
