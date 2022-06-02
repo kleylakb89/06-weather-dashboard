@@ -91,8 +91,8 @@ function weatherSearch(city, lat, lon) {
         if (data.current.uvi < 4) {
             uviEl.style.backgroundColor = 'green';
         } else if (data.current.uvi > 3 && data.current.uvi < 7) {
-            uvi.style.backgroundColor = 'orange';
-        } else uvi.style.backgroundColor = 'red';
+            uviEl.style.backgroundColor = 'orange';
+        } else uviEl.style.backgroundColor = 'red';
         
         currentEl.append(nameEl, dateEl, iconEl, tempEl, humidEl, windEl, uviEl);
         cityEl.appendChild(currentEl);
