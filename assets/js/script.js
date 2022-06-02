@@ -78,10 +78,11 @@ function weatherSearch(city, lat, lon) {
             var nameEl = document.createElement('h2');
             var dateEl = document.createElement('h3');
             var iconEl = document.createElement('img');
-            var tempEl = document.createElement('p');
-            var humidEl = document.createElement('p');
-            var windEl = document.createElement('p');
-            var uviEl = document.createElement('p');
+            var listEl = document.createElement('ul')
+            var tempEl = document.createElement('li');
+            var humidEl = document.createElement('li');
+            var windEl = document.createElement('li');
+            var uviEl = document.createElement('li');
 
             var now = moment().format('MM/DD/YYYY');
             var icon = data.current.weather[0].icon;
@@ -101,8 +102,9 @@ function weatherSearch(city, lat, lon) {
                 uviEl.style.backgroundColor = 'orange';
             } else uviEl.style.backgroundColor = 'red';
 
-            currentEl.append(nameEl, dateEl, iconEl, tempEl, humidEl, windEl, uviEl);
-            cityEl.appendChild(currentEl);
+            listEl.append(tempEl, humidEl, windEl, uviEl);
+            currentEl.append(nameEl, dateEl, iconEl);
+            cityEl.append(currentEl, listEl);
 
 
             for (i = 0; i < 5; i++) {
