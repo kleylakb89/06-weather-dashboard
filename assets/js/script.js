@@ -46,6 +46,9 @@ function citySearch() {
         }
         weatherSearch(currentCity, lat, lon);
     })
+    .catch(function(err) {
+        console.log(err);
+    })
 }
 
 
@@ -101,7 +104,9 @@ function weatherSearch(city, lat, lon) {
                 var futureBlock = [date, iconUrl, nextDay.temp.max, nextDay.wind_speed, nextDay.humidity];
                 displayFuture(futureBlock);
             };
-
+        })
+        .catch(function(err) {
+            console.log(err);
         })
 }
 
@@ -132,6 +137,7 @@ function searchHistory(city) {
             pastCities.splice(i, 1);
         } 
     }
+
     pastCities.push(city);
     
     localStorage.setItem('search-history', JSON.stringify(pastCities))
@@ -151,25 +157,6 @@ function displayHistory() {
         historyEl.append(pCityEl);
     }
 }
-
-// function pastSearch(button) {
-//     var currentCity = button.value;
-//     var geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${currentCity}&limit=1&appid=43ba4285918e75abf5e651327d673253`;
-    
-//     searchHistory(currentCity);
-
-//     fetch(geoUrl)
-//     .then(function (response) {
-//         return response.json();
-//     })
-//     .then(function (data) {
-//         for (var city of data) {
-//             lat = city.lat;
-//             lon = city.lon;
-//         }
-//         weatherSearch(currentCity, lat, lon);
-//     })
-// }
 
 submitEl.addEventListener('click', citySearch);
 
@@ -191,6 +178,9 @@ historyEl.addEventListener('click', function(event){
             lon = city.lon;
         }
         weatherSearch(currentCity, lat, lon);
+    })
+    .catch(function(err) {
+        console.log(err);
     })
 });
 
