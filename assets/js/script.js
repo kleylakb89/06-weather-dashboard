@@ -163,6 +163,9 @@ function displayHistory() {
 
         historyEl.append(pCityEl);
     }
+    var clearEl = document.createElement('button');
+    clearEl.textContent = 'Clear History';
+    historyEl.appendChild(clearEl);
 }
 
 submitEl.addEventListener('click', citySearch);
@@ -171,6 +174,11 @@ historyEl.addEventListener('click', function(event){
     var button = event.target
     var currentCity = button.textContent;
     console.log(button, currentCity);
+    if (currentCity === 'Clear History'){
+        historyEl.innerHTML = null;
+        localStorage.clear();
+        return;
+    }
     var geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${currentCity}&limit=1&appid=43ba4285918e75abf5e651327d673253`;
     
     searchHistory(currentCity);
