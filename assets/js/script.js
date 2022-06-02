@@ -60,6 +60,7 @@ function weatherSearch(lat, lon) {
         var iconEl = document.createElement('img');
         var tempEl = document.createElement('p');
         var humidEl = document.createElement('p');
+        var windEl = document.createElement('p');
         
         var now = moment().format('MM/DD/YYYY');
         var icon = data.weather[0].icon;
@@ -70,8 +71,9 @@ function weatherSearch(lat, lon) {
         iconEl.src = iconUrl;
         tempEl.textContent = data.main.feels_like;
         humidEl.textContent = data.main.humidity;
+        windEl.textContent = data.wind.speed;
 
-        currentEl.append(nameEl, dateEl, iconEl, tempEl, humidEl);
+        currentEl.append(nameEl, dateEl, iconEl, tempEl, humidEl, windEl);
         cityEl.appendChild(currentEl);
     })
 }
