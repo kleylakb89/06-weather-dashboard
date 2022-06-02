@@ -81,10 +81,27 @@ function weatherSearch(city, lat, lon) {
             currentEl.append(nameEl, dateEl, iconEl, tempEl, humidEl, windEl, uviEl);
             cityEl.appendChild(currentEl);
 
-            var futureBlock = [moment().add(1,'d').format('MM/DD/YYYY'), data.daily[0].weather[0].icon, data.daily[0].temp.max, data.daily[0].wind_speed, data.daily[0].humidity];
+            
+            for (i = 0; i < 5; i++) {
+                var day = i + 1;
+                var nextDay = data.daily[i];
+                var date = moment().add(day,'d').format('MM/DD/YYYY')
+                var futureBlock = [date, nextDay.weather[0].icon, nextDay.temp.max, nextDay.wind_speed, nextDay.humidity];
+                displayFuture(futureBlock);
+            };
 
             console.log(futureBlock);
         })
+}
+
+function displayFuture(arr) {
+    var forecastEl = document.createElement('section');
+    var fDateEl = document.createElement('h4');
+
+    fDateEl.textContent = arr[0];
+
+    forecastEl.append(fDateEl);
+    cityEl.appendChild(forecastEl);
 }
 
 submitEl.addEventListener('click', citySearch);
