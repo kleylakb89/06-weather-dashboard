@@ -124,11 +124,11 @@ function displayFuture(arr) {
 }
 
 function searchHistory(city) {
-    var pCityEl = document.createElement('p');
-
-    pCityEl.textContent = city;
-
-    historyEl.appendChild(pCityEl);
+    var pastCities = JSON.parse(localStorage.getItem('searchHistory')) || [];
+    
+    pastCities.push(city);
+    
+    localStorage.setItem('searchHistory', JSON.stringify(pastCities))
 }
 
 submitEl.addEventListener('click', citySearch);
