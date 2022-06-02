@@ -92,18 +92,19 @@ aside>h2 {
 }
 
 .current-city section {
-    text-align: center;
     display: flex;
     width: 100%;
     justify-content: center;
 }
 
-.current-city ul {
-    display: block;
+.current-list {
     width: 100%;
-    justify-content: center;
+    text-align: center;
+    margin: 0 0 0 35%;
 }
 
-.current-city li {
+.current-list p {
     width: 20%;
+    border-radius: 4px;
+    padding: 2px;
 }
