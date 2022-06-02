@@ -37,7 +37,6 @@ function citySearch() {
         .then(function (response) {
             // Will only save the searched city if it gives a valid response from the API
             if (response.ok) {
-                console.log(response);
                 return response.json();
             } else {
                 cityEl.textContent = 'Results Not Found';
@@ -45,7 +44,6 @@ function citySearch() {
             }
         })
         .then(function (data) {
-            console.log(data);
             // Only pulls lat and lon if data array exists, else responds not found
             if (data.length !== 0) {
                 for (var city of data) {
@@ -76,7 +74,6 @@ function weatherSearch(city, lat, lon) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
             var currentEl = document.createElement('section');
             var nameEl = document.createElement('h2');
             var dateEl = document.createElement('h3');
@@ -182,7 +179,7 @@ submitEl.addEventListener('click', citySearch);
 historyEl.addEventListener('click', function (event) {
     var button = event.target
     var currentCity = button.textContent;
-    console.log(button, currentCity);
+
     if (currentCity === 'Clear History') {
         historyEl.innerHTML = null;
         localStorage.clear();
