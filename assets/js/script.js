@@ -73,10 +73,10 @@ function weatherSearch(city, lat, lon) {
             nameEl.textContent = city;
             dateEl.textContent = now;
             iconEl.src = iconUrl;
-            tempEl.textContent = data.current.temp;
-            humidEl.textContent = data.current.humidity;
-            windEl.textContent = data.current.wind_speed;
-            uviEl.textContent = data.current.uvi;
+            tempEl.textContent = 'Temperature: ' + data.current.temp;
+            humidEl.textContent = 'Humidity: ' + data.current.humidity;
+            windEl.textContent = 'Wind Speed: ' + data.current.wind_speed;
+            uviEl.textContent = 'UVI: ' + data.current.uvi;
             
             currentEl.append(nameEl, dateEl, iconEl, tempEl, humidEl, windEl, uviEl);
             cityEl.appendChild(currentEl);
@@ -106,9 +106,9 @@ function displayFuture(arr) {
 
     fDateEl.textContent = arr[0];
     fIconEl.src = arr[1];
-    fTempEl.textContent = arr[2];
-    fWindEl.textContent = arr[3];
-    fHumidEl.textContent = arr[4];
+    fTempEl.textContent = 'Temp: ' + arr[2];
+    fWindEl.textContent = 'Wind: ' + arr[3];
+    fHumidEl.textContent = 'Humidity: ' + arr[4];
 
     forecastEl.append(fDateEl, fIconEl, fTempEl, fWindEl, fHumidEl);
     cityEl.appendChild(forecastEl);
