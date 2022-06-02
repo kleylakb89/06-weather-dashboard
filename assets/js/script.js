@@ -137,7 +137,10 @@ function searchHistory(city) {
             pastCities.splice(i, 1);
         } 
     }
-
+    // Won't continue save into local storage if empty string is submitted
+    if (city === '') {
+        return 
+    }
     pastCities.push(city);
     
     localStorage.setItem('search-history', JSON.stringify(pastCities))
