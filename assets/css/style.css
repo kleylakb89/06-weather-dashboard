@@ -1,3 +1,4 @@
+/* declared color variables at the root for easier, consistent color palette */
 :root {
     --celadon: #0081a7;
     --lightBlue: #dcedff;
@@ -7,17 +8,20 @@
     --shadow: rgba(128, 128, 128, .5)
 }
 
-/* TODO: Google Fonts */
+/* set margin for entire document as well as utilized Google Fonts */
 * {
     margin: 8px;
+    font-family: 'Quicksand', sans-serif;
 }
 
+/* body element set to flexbox */
 body {
     display: flex;
     flex-direction: row;
     flex-flow: row wrap;
 }
 
+/* header covers width of page and centers with a background gradient and rounded corners */
 header {
     width: 100%;
     text-align: center;
@@ -26,25 +30,28 @@ header {
     border-radius: 8px;
 }
 
+/* aside (search area) takes up 20% of page and centers text, add a border */
 aside {
-    display: block;
     border: 2px solid var(--offBlack);
     width: 20%;
     padding: 8px;
     text-align: center;
 }
 
+/* aside's heading sets color and bottom border */
 aside>h2 {
     color: var(--darkPurple);
     border-bottom: 2px solid var(--shadow);
 }
 
+/* textarea sizing and customizing */
 #city-search {
     resize: none;
     margin: 0 auto;
     width: 65%;
 }
 
+/* search button customization */
 .submit {
     display: block;
     margin: 4px auto;
@@ -56,6 +63,7 @@ aside>h2 {
     width: 65%;
 }
 
+/* pseudo-class for search button to give style */
 .submit:hover {
     cursor: pointer;
     transform: translateY(-4px);
@@ -65,6 +73,7 @@ aside>h2 {
     box-shadow: 5px 5px 5px var(--shadow);
 }
 
+/* dynamically created previous searches customized */
 .history button {
     display: block;
     margin: 6px auto;
@@ -76,6 +85,7 @@ aside>h2 {
     padding: 4px;
 }
 
+/* add a pseudo-class to previous searches */
 .history button:hover {
     cursor: pointer;
     transform: translateY(-4px);
@@ -85,6 +95,7 @@ aside>h2 {
     box-shadow: 5px 5px 5px var(--shadow);
 }
 
+/* sets the main element to flexbox */
 .current-city {
     display: flex;
     justify-content: flex-start;
@@ -92,22 +103,26 @@ aside>h2 {
     flex-flow: row wrap;
 }
 
+/* makes top section (city name, date, icon) take up full container and centered */
 .current-city section {
     display: flex;
     width: 100%;
     justify-content: center;
 }
 
+/* temperature, humidity, wind speed, and uvi settings */
 .current-list {
     width: 100%;
     text-align: center;
     margin: 0 0 0 35%;
 }
 
+/* sets width for .current-list paragraphs */
 .current-list p {
     width: 20%;
 }
 
+/* customizes number of uvi */
 .current-list span {
     border-radius: 4px;
     padding: 4px;
@@ -115,6 +130,7 @@ aside>h2 {
     
 }
 
+/* '5 Day Forecast' customization */
 .current-city>p {
     width: 100%;
     font-size: large;
@@ -122,6 +138,7 @@ aside>h2 {
     text-shadow: 2px 2px var(--shadow);
 }
 
+/* customizes forecast cards */
 .five-days {
     margin: 8px;
     background-color: var(--celadon);
@@ -130,6 +147,7 @@ aside>h2 {
     color: var(--lightBlue)
 }
 
+/* adds pseudo-class to forecast cards */
 .five-days:hover {
     transform: scale(1.1);
     transition: all 250ms ease;

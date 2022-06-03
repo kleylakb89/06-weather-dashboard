@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
     <meta name="description" content="Check the weather around the world" />
+    <!-- Added Google Fonts stylesheet and linked css -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@700&family=Quicksand:wght@600&family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
 </head>
+
 <body>
+    <!-- Top most header -->
     <header>
         <h1>What's a-Weather With You?</h1>
     </header>
+    <!-- Aside for searching cities and displaying previous searches -->
     <aside>
         <h2>Pick A City, Any City</h2>
         <textarea name="city-search" id="city-search" cols="30" rows="1" placeholder="Asheville"></textarea>
         <button class="submit">Search</button>
         <section class="history"></section>
     </aside>
-    <main class="current-city">
+    <!-- Main class for dynamically displaying weather conditions -->
+    <main class="current-city"></main>
 
-    </main>
-    
+    <!-- Imported moment.js for dates and linked javascript file -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
